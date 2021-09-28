@@ -23,14 +23,14 @@
 
 **metadata demo**
 ```yaml
-version: v0.0.1
+version: 0.0.1
 description: 样例应用
 keywords:
   - 样例应用
-author: zhangsan@huanqiu.com
+author: zhangsan@foo.com
 maintainers:
   - name: zhangsan
-    email: foo@gmail.com
+    email: zhangsan@foo.com
     web: https://blog.com
 repositories: [ ]
 bugs: https://bugs.demo-app-name-1.com
@@ -123,14 +123,14 @@ spec:
     - name: component-name-1
       type: workload-name-1
       properties:
-        image: foo.com/foo/foo1:v1
+        image: foo.com/foo/foo1:0.0.1
         port: 8080
         cmd: [ "/bin/sleep", "3650d" ]
         cpu: "100m"
     - name: component-name-2
       type: workload-name-2
       properties:
-        image: foo.com/foo/foo2:v1
+        image: foo.com/foo/foo2:0.0.1
         port: 8080
         cmd: [ "/bin/sleep", "3650d" ]
         cpu: "100m"
