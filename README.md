@@ -1,4 +1,4 @@
 # AAM
-yet Another Application Model that is different from OAM.
+AAM represents Another Application Model that is different from OAM.
 
 ## Learn the model
