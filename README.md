@@ -1,6 +1,4 @@
 # YAAM
-Yet Another Application Model that different from OAM.
-
-## Introduction
+Yet Another Application Model that is different from OAM.
 
 ## Learn the model
