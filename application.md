@@ -67,6 +67,14 @@ licenses:
 | name | string | Y | |组件名|
 | type | string | Y | |组件类型，值为 component model name|
 | properties |map| Y | |该类型 component model 提供的属性字段|
+| traits | [][trait](#Trait) | N | | |
+
+##### Trait
+| Attribute | Type | Required | Default Value | Description |
+|-----------|------|----------|---------------|-------------|
+| `type`| string | N | |  A reference to the name of trait definition. For one type of trait, there could be only one configuration in one component. |
+| `properties`| [`Properties`](#properties) | N | |  The properties values to use this trait. |
+
 
 ##### component demo
 ```yaml
