@@ -1,6 +1,6 @@
 [TOC]
 
-# Component Model (extended from OAM)
+# Component model
 This section defines component model.
 
 Components describe functional units that may be instantiated as part of a larger distributed application. The [`Application`](7.application.md) section will describe how components are grouped together and how instances of those components are then configured, while this section will focus on component model itself.
@@ -24,13 +24,13 @@ Here are the attributes that provide top-level information about the component d
 | `metadata` | [`Metadata`](2.overview_and_terminology.md#metadata) | Y | | Entity metadata. |
 | `spec`| [`Spec`](#spec) | Y | | The specification for the component definition. |
 
-### Spec
+#### Spec
 
 | Attribute | Type | Required | Default Value | Description |
 |-----------|------|----------|---------------|-------------|
 | `schematic` | [Schematic](#schematic) | Y | | Schematic information for this component. |
 
-#### Schematic
+##### Schematic
 
 This section declares the schematic of a component that could be instantiated as part of an application in the later deployment workflow. Note that AAM itself has no enforcement on how to implement the schematic as long as it could:
   1. model a deployable unit;
@@ -38,7 +38,7 @@ This section declares the schematic of a component that could be instantiated as
 
 In Island, `cue` are supported for now.
 
-##### Example
+###### Example
 
 Below is a full example of CUE based component definition named `webserver`:
 
