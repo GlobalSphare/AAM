@@ -135,6 +135,11 @@ spec:
         port: 8080
         cmd: [ "/bin/sleep", "3650d" ]
         cpu: "100m"
+      traits:
+        - type: ingress
+          properties: 
+            k1: v1
+            k2: v2
     - name: component-name-2
       type: component-model-name-2
       properties:
