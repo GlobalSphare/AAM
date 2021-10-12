@@ -19,7 +19,7 @@ Here are the attributes that provide top-level information about the component d
 
 | Attribute | Type | Required | Default Value | Description |
 |-----------|------|----------|---------------|-------------|
-| `apiVersion` | `string` | Y | | A string that identifies the version of the schema the object should have. The core types uses `core.oam.dev/v1beta1` in this version of model |
+| `apiVersion` | `string` | Y | | A string that identifies the version of the schema the object should have. The core types uses `aam.globalsphare.com/v1beta1` in this version of model |
 | `kind` | `string` | Y || Must be `ComponentDefinition` |
 | `metadata` | [`Metadata`](2.overview_and_terminology.md#metadata) | Y | | Entity metadata. |
 | `spec`| [`Spec`](#spec) | Y | | The specification for the component definition. |
@@ -32,11 +32,11 @@ Here are the attributes that provide top-level information about the component d
 
 #### Schematic
 
-This section declares the schematic of a component that could be instantiated as part of an application in the later deployment workflow. Note that OAM itself has no enforcement on how to implement the schematic as long as it could:
+This section declares the schematic of a component that could be instantiated as part of an application in the later deployment workflow. Note that AAM itself has no enforcement on how to implement the schematic as long as it could:
   1. model a deployable unit;
   2. expose a JSON schema or equivalent parameter list. 
 
-In KubeVela, following schematic implementations (`cue`, `helm`, `kube`) are supported for now.
+In Island, `cue` are supported for now.
 
 ##### Example
 
@@ -46,12 +46,10 @@ Below is a full example of CUE based component definition named `webserver`:
 <details>
 
 ```yaml
-apiVersion: core.oam.dev/v1beta1
+apiVersion: aam.globalsphare.com/v1beta1
 kind: ComponentDefinition
 metadata:
   name: webserver
-  annotations:
-    definition.oam.dev/description: "webserver is a combo of Deployment + Service"
 spec:
   schematic:
     cue:
@@ -61,11 +59,11 @@ spec:
             kind:       "Deployment"
             spec: {
                 selector: matchLabels: {
-                    "app.oam.dev/component": context.name
+                    "app": context.name
                 }
                 template: {
                     metadata: labels: {
-                        "app.oam.dev/component": context.name
+                        "app": context.name
                     }
                     spec: {
                         containers: [{
@@ -107,7 +105,7 @@ spec:
             kind:       "Service"
             spec: {
                 selector: {
-                    "app.oam.dev/component": context.name
+                    "app": context.name
                 }
                 ports: [
                     {
@@ -141,7 +139,7 @@ spec:
 With above `webserver` installed in the platform, user would be able to deploy this component in an application as below:
 
 ```yaml
-apiVersion: core.oam.dev/v1beta1
+apiVersion: aam.globalsphare.com/v1beta1
 kind: Application
 metadata:
   name: webserver-demo
