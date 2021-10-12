@@ -4,7 +4,7 @@
 
 This section is normative because traits are an inspectable (and possibly shareable) part of the system. All traits MUST be representable in the following format.
 
-Traits are defined with schematics like components. As with workload definitions, each trait definition has a `definitionRef`, which is a reference to a schema that defines the configuration options for the trait.
+Traits are defined with schematics like components.
 
 ### Top-Level Attributes
 
@@ -33,8 +33,8 @@ Metadata provides information about the contents of the object.
 
 | Attribute | Type | Required | Default Value | Description |
 |-----------|------|----------|---------------|-------------|
-| `appliesToComponents` | `[]string` | * | | The collection of `component model` to which this trait applies. If this field is empty or unspecified or specified as `"*"`, it means applies _any workload type_. A trait must apply to at least one workload type. This attribute must contain at least one value. |
-| `conflictsWith` | `[]string` | N | | A list of traits that would be conflict with this trait when applied to same workload type. For example, `autoscaling` may conflict with `cron-autoscaling`. |
+| `appliesToComponents` | `[]string` | * | | The collection of `component model` to which this trait applies. If this field is empty or unspecified or specified as `"*"`, it means applies _any component model type_. A trait must apply to at least one component model type. This attribute must contain at least one value. |
+| `conflictsWith` | `[]string` | N | | A list of traits that would be conflict with this trait when applied to same component model type. For example, `autoscaling` may conflict with `cron-autoscaling`. |
 | `schematic` | [Schematic](#schematic) | Y | | Schematic information for this traits. |
 
 ##### Schematic
