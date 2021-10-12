@@ -10,7 +10,7 @@
 ## 顶级字段
 | Attribute | Type | Required | Default Value | Description |
 |-----------|------|----------|---------------|-------------|
-| apiVersion | string | Y | | 值必须为 ami.globalsphare.com/v1alpha1，命名规范参照 [group/version](https://xuejipeng.github.io/kubebuilder-doc-cn/cronjob-tutorial/gvks.html) 。 |
+| apiVersion | string | Y | | 值必须为 aam.globalsphare.com/v1alpha1，命名规范参照 [group/version](https://xuejipeng.github.io/kubebuilder-doc-cn/cronjob-tutorial/gvks.html) 。 |
 | kind | string | Y | | 值必须为 Application，命名规范参照 [kind](https://xuejipeng.github.io/kubebuilder-doc-cn/cronjob-tutorial/gvks.html) 。 |
 | metadata | [metadata](#metadata) | Y | | 应用的元信息，比如 name 等。 |
 | spec| [spec](#spec) | Y | | 应用详细部署及描述信息 |
@@ -65,13 +65,13 @@ licenses:
 | Attribute | Type | Required | Default Value | Description |
 |-----------|------|----------|---------------|-------------|
 | name | string | Y | |组件名|
-| type | string | Y | |组件类型，值为 workload name|
-| properties |map| Y | |该类型 workload 提供的属性字段|
+| type | string | Y | |组件类型，值为 component model name|
+| properties |map| Y | |该类型 component model 提供的属性字段|
 
 ##### component demo
 ```yaml
 name: component-name-1
-type: workload-name-1
+type: component-model-name-1
 properties:
     image: harbor1.zlibs.com/foo/foo1:v1
     port: 8080
@@ -99,7 +99,7 @@ properties:
 
 # Full demo
 ```yaml
-apiVersion: ami.globalsphare.com/v1alpha1
+apiVersion: aam.globalsphare.com/v1alpha1
 kind: Application
 metadata:
   name: demo-app-name-1
@@ -121,14 +121,14 @@ metadata:
 spec:
   components:
     - name: component-name-1
-      type: workload-name-1
+      type: component-model-name-1
       properties:
         image: foo.com/foo/foo1:0.0.1
         port: 8080
         cmd: [ "/bin/sleep", "3650d" ]
         cpu: "100m"
     - name: component-name-2
-      type: workload-name-2
+      type: component-model-name-2
       properties:
         image: foo.com/foo/foo2:0.0.1
         port: 8080
