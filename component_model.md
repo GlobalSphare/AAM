@@ -28,23 +28,7 @@ Here are the attributes that provide top-level information about the component d
 
 | Attribute | Type | Required | Default Value | Description |
 |-----------|------|----------|---------------|-------------|
-| `workload` | [`WorkloadTypeDescriptor`](#workloadTypeDescriptor) | Y | | Identifier to [workload type](4.workload_types.md) of this component. |
 | `schematic` | [Schematic](#schematic) | Y | | Schematic information for this component. |
-
-#### WorkloadTypeDescriptor
-
-| Attribute | Type | Required | Default Value | Description |
-|-----------|------|----------|---------------|-------------|
-| `type` | `string` | Y | | A reference to a `WorkloadDefinition` via name. |
-| `definition` | [WorkloadGVK](#workloadGVK) | Y | | Mutually exclusive to `type`, a reference to `WorkloadDefinition` via group, version, and kind. |
-
-##### WorkloadGVK
-
-| Attribute | Type | Required | Default Value | Description |
-|-----------|------|----------|---------------|-------------|
-| `apiVersion` | `string` | Y | | The API version the workload type. |
-| `kind` | `string` | Y || The API kind of the workload type. |
-
 
 #### Schematic
 
@@ -69,10 +53,6 @@ metadata:
   annotations:
     definition.oam.dev/description: "webserver is a combo of Deployment + Service"
 spec:
-  workload:
-    definition:
-      apiVersion: apps/v1
-      kind: Deployment
   schematic:
     cue:
       template: |
@@ -177,7 +157,3 @@ spec:
           value: "bar"
         cpu: "100m"
 ```
-Examples for other schematic formats:
-
-- Helm component: [sample](https://kubevela.io/docs/next/end-user/components/helm)
-- Raw Kubernetes API resource as component: [sample](https://kubevela.io/docs/next/end-user/components/cue/raw).
