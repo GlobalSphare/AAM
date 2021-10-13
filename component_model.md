@@ -3,7 +3,8 @@
 # Component model
 This section defines component model.
 
-Components describe functional units that may be instantiated as part of a larger distributed application. The [`Application`](7.application.md) section will describe how components are grouped together and how instances of those components are then configured, while this section will focus on component model itself.
+Components describe functional units that may be instantiated as part of a larger distributed application. The [`Application`](application.md) section will describe how components are grouped together and how instances of those components are then configured, while this section will focus on 
+component model itself.
 
 ## Component Definition
 
@@ -21,8 +22,21 @@ Here are the attributes that provide top-level information about the component d
 |-----------|------|----------|---------------|-------------|
 | `apiVersion` | `string` | Y | | A string that identifies the version of the schema the object should have. The core types uses `aam.globalsphare.com/v1beta1` in this version of model |
 | `kind` | `string` | Y || Must be `ComponentDefinition` |
-| `metadata` | [`Metadata`](2.overview_and_terminology.md#metadata) | Y | | Entity metadata. |
+| `metadata` | [`Metadata`](#metadata) | Y | | Entity metadata. |
 | `spec`| [`Spec`](#spec) | Y | | The specification for the component definition. |
+
+#### Metadata
+
+This metadata section is made up of several top-level keys.
+
+Metadata provides information about the contents of the object.
+
+| Attribute | Type | Required | Default Value | Description |
+|-----------|------|----------|---------------|-------------|
+| `name` | `string` | Y | | A name for the schematic. `name` is subject to the restrictions listed beneath this table. |
+| `labels` | `map[string]string` | N | | A set of string key/value pairs used as arbitrary labels on this component. See the "Label format" section immediately below. |
+| `annotations` | `map[string]string`| N || A set of string key/value pairs used as arbitrary descriptive text associated with this object. See the "Annotations format" section immediately below. |
+
 
 #### Spec
 
