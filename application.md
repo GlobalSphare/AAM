@@ -57,7 +57,7 @@ licenses:
 |-----------|------|----------|---------------|-------------|
 | components |[component](#component)[]| Y | | 组件列表 |
 | exports |[resourcename](#resourcename)[[operation](#operation)[]]| N | | 可提供其他应用依赖或访问的资源 |
-| dependencies |[dependencies](#dependencies)[]| N | | 依赖的资源（其他应用） |
+| dependencies |[dependencie](#dependencie)[]| N | | 依赖的资源（其他应用） |
 | userconfigs |[JSONSchema](#JSONSchema)| N | | 运行时动态配置的字段描述 |
 
 
@@ -94,7 +94,7 @@ properties:
 ##### operation
 资源可操作类型：create、update、get、delete。
 
-#### dependencies
+#### dependencie
 | Attribute | Type | Required | Default Value | Description |
 |-----------|------|----------|---------------|-------------|
 | name | string | Y | |依赖的目标应用名|
