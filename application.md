@@ -58,7 +58,7 @@ licenses:
 | components |[component](#component)[]| Y | | 组件列表 |
 | exports |[resourcename](#resourcename)[[operation](#operation)[]]| N | | 可提供其他应用依赖或访问的资源 |
 | dependencies |[dependencies](#dependencies)[]| N | | 依赖的资源（其他应用） |
-| userconfigs |[userconfigs](#userconfigs)[]| N | | 运行时动态配置的字段描述 |
+| userconfigs |[JSONSchema](#JSONSchema)| N | | 运行时动态配置的字段描述 |
 
 
 #### component
@@ -102,7 +102,7 @@ properties:
 | location | string | N |  | user-defined：需要用户选择已经部署好的实例；<br> https://gitlab.com：用户无法选择, 只能授权使用该网址提供的服务. 针对的是无法私有化部署的软件；<br>user-defined(https://gitlab.com)：用户可以选择已经部署好的实例 或者 用户选择括号中的网站提供给的服务. 针对的是即可私有化部署 有可提供公有服务的软件。|
 | uses |[resourcename](#resourcename)[[operation](#operation)[]]| Y | |具体依赖该应用的哪些资源|
 
-#### userconfigs
+#### JSONSchema
 运行时动态配置的字段描述规范：[JSON Schema](https://json-schema.org/)
 
 # Full demo
