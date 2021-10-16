@@ -67,7 +67,7 @@ licenses:
 | name | string | Y | |组件名|
 | type | string | Y | |组件类型，值为 component model name|
 | properties |map| Y | |该类型 component model 提供的属性字段|
-| traits | [][trait](#Trait) | N | | |
+| traits | [trait](#Trait)[] | N | | |
 
 ##### Trait
 | Attribute | Type | Required | Default Value | Description |
