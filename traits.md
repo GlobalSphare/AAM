@@ -12,7 +12,7 @@ The top-level attributes of a trait define its metadata, version, kind, and spec
 
 | Attribute | Type | Required | Default Value | Description |
 |-----------|------|----------|---------------|-------------|
-| `apiVersion` | `string` | Y || A string that identifies the version of the schema the object should have. The core types uses `aam.globalsphare.com/v1beta1` in this version of documentation. |
+| `apiVersion` | `string` | Y || A string that identifies the version of the schema the object should have. The core types uses `aam.globalsphare.com/v1alpha1` in this version of documentation. |
 | `kind` | `string` | Y || Must be `TraitDefinition` |
 | `metadata` | [`Metadata`](#metadata) | Y | | Information about the trait. |
 | `spec`| [`Spec`](#spec) | Y || A specification for trait attributes. |
@@ -47,7 +47,7 @@ In Island, `cue` are supported for now.
 
 ## demo
 ```yaml
-apiVersion: aam.globalsphare.com/v1beta1
+apiVersion: aam.globalsphare.com/v1alpha1
 kind: TraitDefinition
 metadata:
   name: expose
