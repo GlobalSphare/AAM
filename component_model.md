@@ -20,7 +20,7 @@ Here are the attributes that provide top-level information about the component d
 
 | Attribute | Type | Required | Default Value | Description |
 |-----------|------|----------|---------------|-------------|
-| `apiVersion` | `string` | Y | | A string that identifies the version of the schema the object should have. The core types uses `aam.globalsphare.com/v1beta1` in this version of model |
+| `apiVersion` | `string` | Y | | A string that identifies the version of the schema the object should have. The core types uses `aam.globalsphare.com/v1alpha1` in this version of model |
 | `kind` | `string` | Y || Must be `ComponentDefinition` |
 | `metadata` | [`Metadata`](#metadata) | Y | | Entity metadata. |
 | `spec`| [`Spec`](#spec) | Y | | The specification for the component definition. |
@@ -60,7 +60,7 @@ Below is a full example of CUE based component definition named `webserver`:
 <details>
 
 ```yaml
-apiVersion: aam.globalsphare.com/v1beta1
+apiVersion: aam.globalsphare.com/v1alpha1
 kind: ComponentDefinition
 metadata:
   name: webserver
@@ -153,7 +153,7 @@ spec:
 With above `webserver` installed in the platform, user would be able to deploy this component in an application as below:
 
 ```yaml
-apiVersion: aam.globalsphare.com/v1beta1
+apiVersion: aam.globalsphare.com/v1alpha1
 kind: Application
 metadata:
   name: webserver-demo
