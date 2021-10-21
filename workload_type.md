@@ -1,31 +1,26 @@
 [TOC]
 
-# Component model
-This section defines component model.
+# WorkloadType
 
-Components describe functional units that may be instantiated as part of a larger distributed application. The [`Application`](application.md) section will describe how components are grouped together and how instances of those components are then configured, while this section will focus on 
-component model itself.
+The role of a `WorkloadType` entity is to permit component providers to declare, in infrastructure-neutral format, the runtime characteristics of such unit of execution. 
 
-## Component Definition
-
-The role of a `ComponentDefinition` entity is to permit component providers to declare, in infrastructure-neutral format, the runtime characteristics of such unit of execution. 
-
-For example, each microservice in an application is described as a component. Note that `ComponentDefinition` itself is *NOT* an instance of that microservice, but a declaration of the configurable attributes of that microservice. These configurable attributes should be expose as a list of parameters which allow the application team to set and instantiate this component later at deployment time.
+For example, each microservice in an application is described as a component. Note that `WorkloadType` itself is *NOT* an instance of that microservice, but a declaration of the configurable attributes of that microservice. These configurable attributes should be expose as a list of parameters 
+which allow the application team to set and instantiate this component later at deployment time.
 
 In practice, a simple containerized workload, a Helm chart, or a cloud database may all be modeled as a component.
 
-### Top-Level Attributes
+## Top-Level Attributes
 
 Here are the attributes that provide top-level information about the component definition.
 
 | Attribute | Type | Required | Default Value | Description |
 |-----------|------|----------|---------------|-------------|
 | `apiVersion` | `string` | Y | | A string that identifies the version of the schema the object should have. The core types uses `aam.globalsphare.com/v1alpha1` in this version of model |
-| `kind` | `string` | Y || Must be `ComponentDefinition` |
+| `kind` | `string` | Y || Must be `WorkloadType` |
 | `metadata` | [`Metadata`](#metadata) | Y | | Entity metadata. |
 | `spec`| [`Spec`](#spec) | Y | | The specification for the component definition. |
 
-#### Metadata
+### Metadata
 
 This metadata section is made up of several top-level keys.
 
@@ -61,7 +56,7 @@ Below is a full example of CUE based component definition named `webserver`:
 
 ```yaml
 apiVersion: aam.globalsphare.com/v1alpha1
-kind: ComponentDefinition
+kind: WorkloadType
 metadata:
   name: webserver
 spec:

@@ -1,9 +1,7 @@
 [TOC]
 
 # Applicaton
-由若干 components 组成，并提供资源以供其他应用依赖（访问）。
-
-基于 OAM 中对于 Application 的定义，扩展了部分属性。
+由若干 component 组成，并提供资源以供其他应用依赖（访问）。
  
 
 # Attributes
@@ -19,38 +17,28 @@
 | Attribute | Type | Required | Default Value | Description |
 |-----------|------|----------|---------------|-------------|
 | name | string | Y | | 应用名 |
-| annotations | [annotations](#annotations) | Y | | 一些附加的元信息字段 | 
+| version | string | Y | | 应用版本 |
+| description | string | Y | | 应用名 |
+| keywords | string[] | Y | | 应用名 |
+| author | string | Y | | 应用名 |
+| maintainers | [maintainer](#maintainers)[] | Y | | 应用名 |
+| repositories | string[] | Y | | 应用名 |
+| bugs | string | Y | | 应用名 |
+| repositories | string[] | Y | | 应用名 |
+| licenses | [license](#license)[] | Y | | 应用名 |
 
-**metadata demo**
-```yaml
-version: 0.0.1
-description: 样例应用
-keywords:
-  - 样例应用
-author: zhangsan@foo.com
-maintainers:
-  - name: zhangsan
-    email: zhangsan@foo.com
-    web: https://blog.com
-repositories: [ ]
-bugs: https://bugs.demo-app-name-1.com
-licenses:
-  - type: LGPL
-    url: https://license.spec.com
-```
-
-#### annotations
+#### maintainer
 | Attribute | Type | Required | Default Value | Description |
 |-----------|------|----------|---------------|-------------|
-| version | string | Y | | [语义化版本 2.0](https://semver.org/lang/zh-CN/) |
-| description | string | N | | 应用描述 |
-| keywords | string[] | N | | 应用关键字 |
-| author | string | N | | 作者 |
-| maintainers |map[] | N | | 项目维护者列表 |
-| repositories |string[]| N | | 项目代码仓库列表 |
-| bugs |string| N | | bug 反馈地址 |
-| licenses |map[]| Y | | 软件许可：LGPL、Copyleft、Permissive 等|
+| name | string | Y | | 应用名 |
+| email | string | Y | | 应用名 |
+| web | string | Y | | 应用名 |
 
+#### license
+| Attribute | Type | Required | Default Value | Description |
+|-----------|------|----------|---------------|-------------|
+| type | string | Y | | license type |
+| url | string | Y | | license url |
 
 ### spec
 | Attribute | Type | Required | Default Value | Description |
