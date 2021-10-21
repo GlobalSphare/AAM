@@ -25,6 +25,8 @@
 | repositories | string[] | N | | 代码仓库 |
 | bugs | string | N | | bug 反馈 |
 | licenses | [license](#license)[] | Y | | 许可 |
+| labels | `map[string]string` | N | |  |
+| annotations | map[string]string| N | |  |
 
 #### maintainer
 | Attribute | Type | Required | Default Value | Description |
@@ -44,7 +46,7 @@
 |-----------|------|----------|---------------|-------------|
 | components |[component](#component)[]| Y | | 组件列表 |
 | exports |[resourcename](#resourcename)[[operation](#operation)[]]| N | | 可提供其他应用依赖或访问的资源 |
-| dependencies |[dependencie](#dependencie)[]| N | | 依赖的资源（其他应用） |
+| dependencies |[dependency](#dependency)[]| N | | 依赖的资源（其他应用） |
 | userconfigs |[JSONSchema](#JSONSchema)| N | | 运行时动态配置的字段描述 |
 
 
@@ -52,7 +54,7 @@
 | Attribute | Type | Required | Default Value | Description |
 |-----------|------|----------|---------------|-------------|
 | name | string | Y | |组件名|
-| type | string | Y | |组件类型，值为 component model name|
+| type | string | Y | |组件类型，值为 workloadtype name|
 | properties |map| Y | |该类型 component model 提供的属性字段|
 | traits | [trait](#Trait)[] | N | | |
 
@@ -81,7 +83,7 @@ properties:
 ##### operation
 资源可操作类型：create、update、get、delete。
 
-#### dependencie
+#### dependency
 | Attribute | Type | Required | Default Value | Description |
 |-----------|------|----------|---------------|-------------|
 | name | string | Y | |依赖的目标应用名|
@@ -98,21 +100,20 @@ apiVersion: aam.globalsphare.com/v1alpha1
 kind: Application
 metadata:
   name: demo-app-name-1
-  annotations:
-    version: v0.0.1
-    description: 样例应用
-    keywords:
-      - 样例应用
-    author: zhangsan@huanqiu.com
-    maintainers:
-      - name: zhangsan
-        email: foo@gmail.com
-        web: https://blog.com
-    repositories: [ ]
-    bugs: https://bugs.demo-app-name-1.com
-    licenses:
-      - type: LGPL
-        url: https://license.spec.com
+  version: v0.0.1
+  description: 样例应用
+  keywords:
+    - 样例应用
+  author: zhangsan@huanqiu.com
+  maintainers:
+    - name: zhangsan
+      email: foo@gmail.com
+      web: https://blog.com
+  repositories: [ ]
+  bugs: https://bugs.demo-app-name-1.com
+  licenses:
+    - type: LGPL
+      url: https://license.spec.com
 spec:
   components:
     - name: component-name-1
