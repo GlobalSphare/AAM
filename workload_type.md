@@ -51,9 +51,6 @@ In Island, `cue` are supported for now.
 
 Below is a full example of CUE based component definition named `webserver`:
 
-<p>
-<details>
-
 ```yaml
 apiVersion: aam.globalsphare.com/v1alpha1
 kind: WorkloadType
@@ -141,9 +138,6 @@ spec:
             cpu?: string
         }
 ```
-
-</details>
-</p>
 
 With above `webserver` installed in the platform, user would be able to deploy this component in an application as below:
 

@@ -17,22 +17,21 @@
 | Attribute | Type | Required | Default Value | Description |
 |-----------|------|----------|---------------|-------------|
 | name | string | Y | | 应用名 |
-| version | string | Y | | 应用版本 |
-| description | string | Y | | 应用名 |
-| keywords | string[] | Y | | 应用名 |
-| author | string | Y | | 应用名 |
-| maintainers | [maintainer](#maintainers)[] | Y | | 应用名 |
-| repositories | string[] | Y | | 应用名 |
-| bugs | string | Y | | 应用名 |
-| repositories | string[] | Y | | 应用名 |
-| licenses | [license](#license)[] | Y | | 应用名 |
+| version | string | Y | | 版本 |
+| description | string | N | | 应用描述 |
+| keywords | string[] | N | | 关键词 |
+| author | string | Y | | 作者 |
+| maintainers | [maintainer](#maintainers)[] | N | | 维护者列表 |
+| repositories | string[] | N | | 代码仓库 |
+| bugs | string | N | | bug 反馈 |
+| licenses | [license](#license)[] | Y | | 许可 |
 
 #### maintainer
 | Attribute | Type | Required | Default Value | Description |
 |-----------|------|----------|---------------|-------------|
-| name | string | Y | | 应用名 |
-| email | string | Y | | 应用名 |
-| web | string | Y | | 应用名 |
+| name | string | Y | | 维护者名字 |
+| email | string | N | | 邮箱 |
+| web | string | N | | 博客地址 |
 
 #### license
 | Attribute | Type | Required | Default Value | Description |
