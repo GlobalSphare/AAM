@@ -1,7 +1,7 @@
 [TOC]
 
 # Applicaton
-由若干 component 组成，并提供资源以供其他应用依赖（访问）。
+由若干 workload 组成，并提供资源以供其他应用依赖（访问）。
  
 
 # Attributes
@@ -32,7 +32,7 @@
 | Attribute | Type | Required | Default Value | Description |
 |-----------|------|----------|---------------|-------------|
 | name | string | Y | | 维护者名字 |
-| email | string | N | | 邮箱 |
+| email | string | Y | | 邮箱 |
 | web | string | N | | 博客地址 |
 
 #### license
@@ -44,31 +44,31 @@
 ### spec
 | Attribute | Type | Required | Default Value | Description |
 |-----------|------|----------|---------------|-------------|
-| components |[component](#component)[]| Y | | 组件列表 |
+| workloads |[workload](#workload)[]| Y | | 组件列表 |
 | exports |[resourcename](#resourcename)[[operation](#operation)[]]| N | | 可提供其他应用依赖或访问的资源 |
 | dependencies |[dependency](#dependency)[]| N | | 依赖的资源（其他应用） |
 | userconfigs |[JSONSchema](#JSONSchema)| N | | 运行时动态配置的字段描述 |
 
 
-#### component
+#### workload
 | Attribute | Type | Required | Default Value | Description |
 |-----------|------|----------|---------------|-------------|
 | name | string | Y | |组件名|
 | type | string | Y | |组件类型，值为 workloadtype name|
-| properties |map| Y | |该类型 component model 提供的属性字段|
+| properties |map| Y | |该类型 workload model 提供的属性字段|
 | traits | [trait](#Trait)[] | N | | |
 
 ##### Trait
 | Attribute | Type | Required | Default Value | Description |
 |-----------|------|----------|---------------|-------------|
-| `type`| string | N | |  A reference to the name of trait definition. For one type of trait, there could be only one configuration in one component. |
+| `type`| string | N | |  A reference to the name of trait definition. For one type of trait, there could be only one configuration in one workload. |
 | `properties`| [`Properties`](#properties) | N | |  The properties values to use this trait. |
 
 
-##### component demo
+##### workload demo
 ```yaml
-name: component-name-1
-type: component-model-name-1
+name: workload-name-1
+type: workload-model-name-1
 properties:
     image: harbor1.zlibs.com/foo/foo1:v1
     port: 8080
@@ -115,9 +115,9 @@ metadata:
     - type: LGPL
       url: https://license.spec.com
 spec:
-  components:
-    - name: component-name-1
-      type: component-model-name-1
+  workloads:
+    - name: workload-name-1
+      type: workload-model-name-1
       properties:
         image: foo.com/foo/foo1:0.0.1
         port: 8080
@@ -128,8 +128,8 @@ spec:
           properties: 
             k1: v1
             k2: v2
-    - name: component-name-2
-      type: component-model-name-2
+    - name: workload-name-2
+      type: workload-model-name-2
       properties:
         image: foo.com/foo/foo2:0.0.1
         port: 8080
