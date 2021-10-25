@@ -33,7 +33,6 @@ Metadata provides information about the contents of the object.
 
 | Attribute | Type | Required | Default Value | Description |
 |-----------|------|----------|---------------|-------------|
-| `appliesToComponents` | `string[]` | * | | The collection of `component model` to which this trait applies. If this field is empty or unspecified or specified as `"*"`, it means applies _any component model type_. A trait must apply to at least one component model type. This attribute must contain at least one value. |
 | `conflictsWith` | `string[]` | N | | A list of traits that would be conflict with this trait when applied to same component model type. For example, `autoscaling` may conflict with `cron-autoscaling`. |
 | `schematic` | [Schematic](#schematic) | Y | | Schematic information for this traits. |
 
