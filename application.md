@@ -44,7 +44,7 @@
 ### spec
 | Attribute | Type | Required | Default Value | Description |
 |-----------|------|----------|---------------|-------------|
-| workloads |[workload](#workload)[]| Y | | 组件列表 |
+| workloads |[workload](#workload)[]| Y | | 工作负载列表 |
 | exports |[resourcename](#resourcename)[[operation](#operation)[]]| N | | 可提供其他应用依赖或访问的资源 |
 | dependencies |[dependency](#dependency)[]| N | | 依赖的资源（其他应用） |
 | userconfigs |[JSONSchema](#JSONSchema)| N | | 运行时动态配置的字段描述 |
@@ -53,8 +53,8 @@
 #### workload
 | Attribute | Type | Required | Default Value | Description |
 |-----------|------|----------|---------------|-------------|
-| name | string | Y | |组件名|
-| type | string | Y | |组件类型，值为 workloadtype name|
+| name | string | Y | |工作负载名|
+| type | string | Y | |工作负载类型，值为 workloadtype name|
 | properties |map| Y | |该类型 workload model 提供的属性字段|
 | traits | [trait](#Trait)[] | N | | |
 
