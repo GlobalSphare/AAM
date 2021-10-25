@@ -31,8 +31,8 @@
 #### maintainer
 | Attribute | Type | Required | Default Value | Description |
 |-----------|------|----------|---------------|-------------|
-| name | string | Y | | 维护者名字 |
 | email | string | Y | | 邮箱 |
+| name | string | Y | | 维护者名字 |
 | web | string | N | | 博客地址 |
 
 #### license
@@ -45,7 +45,7 @@
 | Attribute | Type | Required | Default Value | Description |
 |-----------|------|----------|---------------|-------------|
 | workloads |[workload](#workload)[]| Y | | 工作负载列表 |
-| exports |[resourcename](#resourcename)[[operation](#operation)[]]| N | | 可提供其他应用依赖或访问的资源 |
+| exports |[resource name](#resource name)[[operation](#operation)[]]| N | | 可提供其他应用依赖或访问的资源 |
 | dependencies |[dependency](#dependency)[]| N | | 依赖的资源（其他应用） |
 | userconfigs |[JSONSchema](#JSONSchema)| N | | 运行时动态配置的字段描述 |
 
@@ -53,7 +53,7 @@
 #### workload
 | Attribute | Type | Required | Default Value | Description |
 |-----------|------|----------|---------------|-------------|
-| name | string | Y | |工作负载名|
+| name | string | Y | |工作负载名，当前应用内不可重复。|
 | type | string | Y | |工作负载类型，值为 workloadtype name|
 | properties |map| Y | |该类型 workload model 提供的属性字段|
 | traits | [trait](#Trait)[] | N | | |
@@ -77,11 +77,11 @@ properties:
 ```
 
 #### exports
-##### resourcename
+##### resource name
 资源名，应用自定义，资源被访问时的 path 部分，比如资源 url：`https://foo.com/rs1` `resourcename` 为 `/rs1`。
 
 ##### operation
-资源可操作类型：create、update、get、delete。
+资源可操作类型：create、update、read、delete。
 
 #### dependency
 | Attribute | Type | Required | Default Value | Description |
