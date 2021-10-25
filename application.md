@@ -45,7 +45,7 @@
 | Attribute | Type | Required | Default Value | Description |
 |-----------|------|----------|---------------|-------------|
 | workloads |[workload](#workload)[]| Y | | 工作负载列表 |
-| exports |[resource name](#resource-name)[[operation](#operation)[]]| N | | 可提供其他应用依赖或访问的资源 |
+| exports |[resource item](#resource-name)[[operation](#operation)[]]| N | | 可提供其他应用依赖或访问的资源 |
 | dependencies |[dependency](#dependency)[]| N | | 依赖的资源（其他应用） |
 | userconfigs |[JSONSchema](#JSONSchema)| N | | 运行时动态配置的字段描述 |
 
@@ -78,7 +78,7 @@ properties:
 
 #### exports
 <a name="resource-name"></a>
-##### resource name
+##### resource item
 资源名，应用自定义，资源被访问时的 path 部分，比如资源 url：`https://foo.com/rs1` `resourcename` 为 `/rs1`。
 
 ##### operation
@@ -90,7 +90,7 @@ properties:
 | name | string | Y | |依赖的目标应用名|
 | version | string | Y | |依赖的目标版本[语义化版本 2.0](https://semver.org/lang/zh-CN/) |
 | location | string | N |  | user-defined：需要用户选择已经部署好的实例；<br> https://gitlab.com：用户无法选择, 只能授权使用该网址提供的服务. 针对的是无法私有化部署的软件；<br>user-defined(https://gitlab.com)：用户可以选择已经部署好的实例 或者 用户选择括号中的网站提供给的服务. 针对的是即可私有化部署 有可提供公有服务的软件。|
-| uses |[resourcename](#resourcename)[[operation](#operation)[]]| Y | |具体依赖该应用的哪些资源|
+| items |[resource items](#resource-name)[[operation](#operation)[]]| Y | |具体依赖该应用的哪些资源|
 
 #### JSONSchema
 运行时动态配置的字段描述规范：[JSON Schema](https://json-schema.org/)
