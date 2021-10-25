@@ -1,4 +1,4 @@
-# Traits
+# Trait
 
 ## Trait Definition
 
