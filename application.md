@@ -45,7 +45,7 @@
 | Attribute | Type | Required | Default Value | Description |
 |-----------|------|----------|---------------|-------------|
 | workloads |[workload](#workload)[]| Y | | 工作负载列表 |
-| exports |[resource name](#resource name)[[operation](#operation)[]]| N | | 可提供其他应用依赖或访问的资源 |
+| exports |[resource name](#resource-name)[[operation](#operation)[]]| N | | 可提供其他应用依赖或访问的资源 |
 | dependencies |[dependency](#dependency)[]| N | | 依赖的资源（其他应用） |
 | userconfigs |[JSONSchema](#JSONSchema)| N | | 运行时动态配置的字段描述 |
 
@@ -77,6 +77,7 @@ properties:
 ```
 
 #### exports
+<a name="resource-name"></a>
 ##### resource name
 资源名，应用自定义，资源被访问时的 path 部分，比如资源 url：`https://foo.com/rs1` `resourcename` 为 `/rs1`。
 
