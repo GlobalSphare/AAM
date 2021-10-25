@@ -89,7 +89,7 @@ properties:
 |-----------|------|----------|---------------|-------------|
 | name | string | Y | |依赖的目标应用名|
 | version | string | Y | |依赖的目标版本[语义化版本 2.0](https://semver.org/lang/zh-CN/) |
-| location | string | N |  | user-defined：需要用户选择已经部署好的实例；<br> https://gitlab.com：用户无法选择, 只能授权使用该网址提供的服务. 针对的是无法私有化部署的软件；<br>user-defined(https://gitlab.com)：用户可以选择已经部署好的实例 或者 用户选择括号中的网站提供给的服务. 针对的是即可私有化部署 有可提供公有服务的软件。|
+| location | string | Y |  | user-defined：需要用户选择已经部署好的实例；<br> https://gitlab.com：用户无法选择, 只能授权使用该网址提供的服务. 针对的是无法私有化部署的软件；<br>user-defined(https://gitlab.com)：用户可以选择已经部署好的实例 或者 用户选择括号中的网站提供给的服务. 针对的是即可私有化部署 有可提供公有服务的软件。|
 | items |[resource items](#resource-name)[[operation](#operation)[]]| Y | |具体依赖该应用的哪些资源|
 
 #### JSONSchema
@@ -107,8 +107,8 @@ metadata:
     - 样例应用
   author: zhangsan@huanqiu.com
   maintainers:
-    - name: zhangsan
-      email: foo@gmail.com
+    - email: foo@gmail.com
+      name: zhangsan
       web: https://blog.com
   repositories: [ ]
   bugs: https://bugs.demo-app-name-1.com
@@ -148,7 +148,7 @@ spec:
     - name: demo-app1
       version: ">=0.0.2"
       location: user-defined(https://www.foo.com)
-      uses:
+      items:
         /resource1:
           - create
           - read
