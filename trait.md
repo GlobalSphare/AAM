@@ -26,7 +26,6 @@ Metadata provides information about the contents of the object.
 | Attribute | Type | Required | Default Value | Description |
 |-----------|------|----------|---------------|-------------|
 | `name` | `string` | Y | | A name for the schematic. `name` is subject to the restrictions listed beneath this table. |
-| `labels` | `map[string]string` | N | | A set of string key/value pairs used as arbitrary labels on this component. See the "Label format" section immediately below. |
 | `annotations` | `map[string]string`| N || A set of string key/value pairs used as arbitrary descriptive text associated with this object. See the "Annotations format" section immediately below. |
 
 #### Spec

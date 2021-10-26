@@ -25,7 +25,6 @@
 | repositories | string[] | N | | 代码仓库 |
 | bugs | string | N | | bug 反馈 |
 | licenses | [license](#license)[] | Y | | 许可 |
-| labels | `map[string]string` | N | |  |
 | annotations | map[string]string| N | |  |
 
 #### maintainer

@@ -22,7 +22,6 @@ Metadata provides information about the contents of the object.
 | Attribute | Type | Required | Default Value | Description |
 |-----------|------|----------|---------------|-------------|
 | `name` | `string` | Y | | vendor name |
-| `labels` | `map[string]string` | N | |  |
 | `annotations` | `map[string]string`| N | |  |
 
 #### Spec
