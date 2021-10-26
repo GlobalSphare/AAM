@@ -36,15 +36,8 @@ Metadata provides information about the contents of the object.
 
 | Attribute | Type | Required | Default Value | Description |
 |-----------|------|----------|---------------|-------------|
-| `schematic` | [Schematic](#schematic) | Y | | Schematic information for this workload. |
-
-##### Schematic
-
-This section declares the schematic of a workload that could be instantiated as part of an application in the later deployment workflow. Note that AAM itself has no enforcement on how to implement the schematic as long as it could:
-  1. model a deployable unit;
-  2. expose a JSON schema or equivalent parameter list. 
-
-In Island, `cue` are supported for now.
+| `parameter` | [JSON Schema](#https://json-schema.org/) | N | | JSON Schema 转换为 yaml 格式。 |
+| `traits` | [trait](#trait.md)[] | N | | 可以支持的 trait 列表，名字即可。 |
 
 ###### Example
 
@@ -56,86 +49,25 @@ kind: WorkloadType
 metadata:
   name: webserver
 spec:
-  schematic:
-    cue:
-      template: |
-        output: {
-            apiVersion: "apps/v1"
-            kind:       "Deployment"
-            spec: {
-                selector: matchLabels: {
-                    "app": context.name
-                }
-                template: {
-                    metadata: labels: {
-                        "app": context.name
-                    }
-                    spec: {
-                        containers: [{
-                            name:  context.name
-                            image: parameter.image
-
-                            if parameter["cmd"] != _|_ {
-                                command: parameter.cmd
-                            }
-
-                            if parameter["env"] != _|_ {
-                                env: parameter.env
-                            }
-
-                            if context["config"] != _|_ {
-                                env: context.config
-                            }
-
-                            ports: [{
-                                containerPort: parameter.port
-                            }]
-
-                            if parameter["cpu"] != _|_ {
-                                resources: {
-                                    limits:
-                                        cpu: parameter.cpu
-                                    requests:
-                                        cpu: parameter.cpu
-                                }
-                            }
-                        }]
-                }
-                }
-            }
-        }
-        // an extra template
-        outputs: service: {
-            apiVersion: "v1"
-            kind:       "Service"
-            spec: {
-                selector: {
-                    "app": context.name
-                }
-                ports: [
-                    {
-                        port:       parameter.port
-                        targetPort: parameter.port
-                    },
-                ]
-            }
-        }
-        parameter: {
-            image: string
-            cmd?: [...string]
-            port: *80 | int
-            env?: [...{
-                name:   string
-                value?: string
-                valueFrom?: {
-                    secretKeyRef: {
-                        name: string
-                        key:  string
-                    }
-                }
-            }]
-            cpu?: string
-        }
+    parameter:
+      $id: 'https://example.com/person.schema.json'
+      $schema: 'https://json-schema.org/draft/2020-12/schema'
+      title: Person
+      type: object
+      properties:
+        firstName:
+          type: string
+          description: The person's first name.
+        lastName:
+          type: string
+          description: The person's last name.
+        age:
+          description: Age in years which must be equal to or greater than zero.
+          type: integer
+          minimum: 0
+    traits:
+      - trait1
+      - trait2
 ```
 
 With above `webserver` installed in the platform, user would be able to deploy this workload in an application as below:
@@ -152,8 +84,10 @@ spec:
       properties:                   # setting parameter values
         image: crccheck/hello-world
         port: 8000                  # this port will be automatically exposed to public
-        env:
-        - name: "foo"
-          value: "bar"
-        cpu: "100m"
+      traits:
+        trait1:
+          properties:
+            parameter1: 1
+            parameter2: 2
+
 ```

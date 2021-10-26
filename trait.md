@@ -32,16 +32,7 @@ Metadata provides information about the contents of the object.
 
 | Attribute | Type | Required | Default Value | Description |
 |-----------|------|----------|---------------|-------------|
-| `conflictsWith` | `string[]` | N | | A list of traits that would be conflict with this trait when applied to same component model type. For example, `autoscaling` may conflict with `cron-autoscaling`. |
-| `schematic` | [Schematic](#schematic) | Y | | Schematic information for this traits. |
-
-##### Schematic
-
-This section declares the schematic of a component that could be instantiated as part of an application in the later deployment workflow. Note that AAM itself has no enforcement on how to implement the schematic as long as it could:
-  1. model a deployable unit;
-  2. expose a JSON schema or equivalent parameter list. 
-
-In Island, `cue` are supported for now.
+| `parameter` | [JSON Schema](#https://json-schema.org/) | N | | JSON Schema 转换为 yaml 格式。 |
 
 ## demo
 ```yaml
@@ -50,27 +41,20 @@ kind: Trait
 metadata:
   name: expose
 spec:
-  schematic:
-    cue:
-      template: |
-        parameter: {
-          http: [string]: int
-        }
-
-        outputs: {
-          for k, v in parameter.http {
-            "\(k)": {
-              apiVersion: "v1"
-              kind:       "Service"
-              spec: {
-                selector:
-                  app: context.name
-                ports: [{
-                  port:       v
-                  targetPort: v
-                }]
-              }
-            }
-          }
-        }
+  parameter:
+    $id: 'https://example.com/person.schema.json'
+    $schema: 'https://json-schema.org/draft/2020-12/schema'
+    title: Person
+    type: object
+    properties:
+      firstName:
+        type: string
+        description: The person's first name.
+      lastName:
+        type: string
+        description: The person's last name.
+      age:
+        description: Age in years which must be equal to or greater than zero.
+        type: integer
+        minimum: 0
 ```

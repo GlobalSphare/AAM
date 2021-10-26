@@ -54,6 +54,7 @@
 |-----------|------|----------|---------------|-------------|
 | name | string | Y | |工作负载名，当前应用内不可重复。|
 | type | string | Y | |工作负载类型，值为 workloadtype name|
+| vender | string | Y | |实现了改 workloadtype 的 vendor 名|
 | properties |map| Y | |该类型 workload model 提供的属性字段|
 | traits | [trait](#Trait)[] | N | | |
 
@@ -118,6 +119,7 @@ spec:
   workloads:
     - name: workload-name-1
       type: workload-model-name-1
+      vender: vendername
       properties:
         image: foo.com/foo/foo1:0.0.1
         port: 8080
@@ -130,6 +132,7 @@ spec:
             k2: v2
     - name: workload-name-2
       type: workload-model-name-2
+      vender: vendername
       properties:
         image: foo.com/foo/foo2:0.0.1
         port: 8080
