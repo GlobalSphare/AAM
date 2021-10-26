@@ -52,19 +52,22 @@ spec:
     parameter:
       $id: 'https://example.com/person.schema.json'
       $schema: 'https://json-schema.org/draft/2020-12/schema'
-      title: Person
+      title: webserver
       type: object
       properties:
-        firstName:
+        image:
           type: string
-          description: The person's first name.
-        lastName:
-          type: string
-          description: The person's last name.
-        age:
-          description: Age in years which must be equal to or greater than zero.
-          type: integer
-          minimum: 0
+          description: The image url.
+        capacity:
+          type: object
+          description: The capacity of this workload
+          properties:
+            cpu:
+              type: string
+              description: cpu limit, 1800m
+            memory:
+              type: string
+              description: memory limit, 7474992Ki
     traits:
       - trait1
       - trait2
@@ -83,7 +86,9 @@ spec:
       type: webserver               # claim to deploy webserver workload definition
       properties:                   # setting parameter values
         image: crccheck/hello-world
-        port: 8000                  # this port will be automatically exposed to public
+        capacity: 
+          cpu: 100m
+          memory: 100Ki
       traits:
         trait1:
           properties:
