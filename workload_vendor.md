@@ -25,42 +25,41 @@ Metadata provides information about the contents of the object.
 | `annotations` | `map[string]string`| N | |  |
 
 ## full demo
-```
+```yaml
 impl: mysql
 
 parameter: {
-		certificate: string
-		capacity: string
-		scale: string
+  certificate: string
+  capacity: string
+  scale: string
 }
 
 construct: {
-		apiVersion: v1
-		kind: deployment
-		metadata:
-			name: demo-1
-		sepc:
-			scale: parameter.scale
-			capacity: parameter.capacity
-
+  apiVersion: v1
+  kind: deployment
+  metadata:
+    name: demo-1
+  sepc:
+    scale: parameter.scale
+    capacity: parameter.capacity
 }
 HighAvailable: {
-		parameter: {
-				nodenumber: number
-		}
-		output: {
-				apiVersion: autoscaling/v2beta2
-				kind: HorizontalPodAutoscaler
-				metadata:
-					name: php-apache
-				spec:
-					scaleTargetRef:
-						apiVersion: apps/v1
-						kind: Deployment
-						name: demo-1
-					minReplicas: 1
-					maxReplicas: HighAvailable.parameter.nodenumber
-		}
+  parameter: {
+    nodenumber: number
+  }
+  output: {
+    apiVersion: autoscaling/v2beta2
+    kind: HorizontalPodAutoscaler
+    metadata:
+      name: php-apache
+    spec:
+      scaleTargetRef:
+        apiVersion: apps/v1
+        kind: Deployment
+        name: demo-1
+      minReplicas: 1
+      maxReplicas: HighAvailable.parameter.nodenumber
+  }
 }
 
 
