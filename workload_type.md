@@ -37,7 +37,7 @@ Metadata provides information about the contents of the object.
 | Attribute | Type | Required | Default Value | Description |
 |-----------|------|----------|---------------|-------------|
 | `parameter` | [JSON Schema](#https://json-schema.org/) | N | | JSON Schema 转换为 yaml 格式。 |
-| `traits` | [trait](#trait.md)[] | N | | 可以支持的 trait 列表，名字即可。 |
+| `traits` | string[] | N | | 可以支持的 trait 列表，名字即可。 |
 
 ###### Example
 

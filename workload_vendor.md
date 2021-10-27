@@ -9,7 +9,7 @@ Here are the attributes that provide top-level information about the workload de
 | Attribute | Type | Required | Default Value | Description |
 |-----------|------|----------|---------------|-------------|
 | `apiVersion` | `string` | Y | | foo.com/v1alpha1 |
-| `kind` | `string` | Y || Must be `Workloadvendor` |
+| `kind` | `string` | Y || Must be `WorkloadVendor` |
 | `metadata` | [`Metadata`](#metadata) | Y | | Entity metadata. |
 | `spec`| [cue template](#https://cuelang.org/) | Y | | The specification for the workload definition. |
 
@@ -24,43 +24,50 @@ Metadata provides information about the contents of the object.
 | `name` | `string` | Y | | vendor name |
 | `annotations` | `map[string]string`| N | |  |
 
-## full demo
+## demo
 ```yaml
-impl: mysql
-
-parameter: {
-  certificate: string
-  capacity: string
-  scale: string
-}
-
-construct: {
-  apiVersion: v1
-  kind: deployment
-  metadata:
-    name: demo-1
-  sepc:
-    scale: parameter.scale
-    capacity: parameter.capacity
-}
-HighAvailable: {
+apiVersion: foo.com/v1alpha1
+kind: WorkloadVendor
+metadata:
+  name: webserver
+  annotations:
+    k1: v1
+spec: |
+  impl: mysql
+  
   parameter: {
-    nodenumber: number
+    certificate: string
+    capacity: string
+    scale: string
   }
-  output: {
-    apiVersion: autoscaling/v2beta2
-    kind: HorizontalPodAutoscaler
+  
+  construct: {
+    apiVersion: v1
+    kind: deployment
     metadata:
-      name: php-apache
-    spec:
-      scaleTargetRef:
-        apiVersion: apps/v1
-        kind: Deployment
-        name: demo-1
-      minReplicas: 1
-      maxReplicas: HighAvailable.parameter.nodenumber
+      name: demo-1
+    sepc:
+      scale: parameter.scale
+      capacity: parameter.capacity
   }
-}
+  HighAvailable: {
+    parameter: {
+      nodenumber: number
+    }
+    output: {
+      apiVersion: autoscaling/v2beta2
+      kind: HorizontalPodAutoscaler
+      metadata:
+        name: php-apache
+      spec:
+        scaleTargetRef:
+          apiVersion: apps/v1
+          kind: Deployment
+          name: demo-1
+        minReplicas: 1
+        maxReplicas: HighAvailable.parameter.nodenumber
+    }
+  }
 
 
 ```
