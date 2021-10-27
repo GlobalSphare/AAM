@@ -25,7 +25,7 @@ Metadata provides information about the contents of the object.
 | `annotations` | `map[string]string`| N | |  |
 
 ## full demo
-```yaml
+```
 impl: mysql
 
 parameter: {
