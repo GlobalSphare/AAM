@@ -1,0 +1,38 @@
+@startuml
+
+map Application1{
+  name => Mysite
+  workload1 => front
+  workload2 => mysql
+}
+
+
+map WorkloadType1 {
+  name => webservice
+  property-1 => port(int, not noll)
+  property-2 => image(string, not noll)
+}
+
+map WorkloadType2 {
+  name => mysql
+  property-1 => port(int, not noll)
+  property-2 => image(string, not noll)
+  property-3 => nodes(int, default 1)
+}
+
+map WorkloadVendor1 {
+  name => webservice
+  spec => for ex: k8s yaml form webservie
+}
+map WorkloadVendor2 {
+  name => mysql
+  spec => for ex: k8s yaml form webservie
+}
+
+
+Application1::workload1 -down-> WorkloadType1
+Application1::workload2 -down-> WorkloadType2
+WorkloadVendor1 -up-> WorkloadType1
+WorkloadVendor2 -up-> WorkloadType2
+
+@enduml
