@@ -4,6 +4,7 @@ map Application1{
   name => Mysite
   workload1 => front
   workload2 => mysql
+  trait => autoscaling
 }
 
 
@@ -19,6 +20,10 @@ map WorkloadType2 {
   property-2 => image(string, not noll)
   property-3 => nodes(int, default 1)
 }
+map Trait1 {
+  name => autoscaling
+  property-1 => mini(int, not noll)
+}
 
 map WorkloadVendor1 {
   name => webservice
@@ -32,7 +37,9 @@ map WorkloadVendor2 {
 
 Application1::workload1 -down-> WorkloadType1
 Application1::workload2 -down-> WorkloadType2
+Application1::trait -down-> Trait1
 WorkloadVendor1 -up-> WorkloadType1
+WorkloadVendor1 -up-> Trait1
 WorkloadVendor2 -up-> WorkloadType2
 
 @enduml
